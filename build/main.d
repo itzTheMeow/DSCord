@@ -74,10 +74,7 @@ main.o: /home/meow/pCloudDrive/DSi/DScord/source/main.cpp \
  /home/meow/pCloudDrive/DSi/DScord/nflib/include/nf_sound.h \
  /home/meow/pCloudDrive/DSi/DScord/nflib/include/nf_media.h \
  /home/meow/pCloudDrive/DSi/DScord/nflib/include/nf_3d.h \
- /home/meow/pCloudDrive/DSi/DScord/nflib/include/nf_sprite3d.h \
- /home/meow/pCloudDrive/DSi/DScord/source/segment.h \
- /home/meow/pCloudDrive/DSi/DScord/source/snake.h \
- /home/meow/pCloudDrive/DSi/DScord/source/apple.h
+ /home/meow/pCloudDrive/DSi/DScord/nflib/include/nf_sprite3d.h
 /opt/devkitpro/libnds/include/nds.h:
 /opt/devkitpro/libnds/include/nds/libversion.h:
 /opt/devkitpro/libnds/include/nds/ndstypes.h:
@@ -154,6 +151,3 @@ main.o: /home/meow/pCloudDrive/DSi/DScord/source/main.cpp \
 /home/meow/pCloudDrive/DSi/DScord/nflib/include/nf_media.h:
 /home/meow/pCloudDrive/DSi/DScord/nflib/include/nf_3d.h:
 /home/meow/pCloudDrive/DSi/DScord/nflib/include/nf_sprite3d.h:
-/home/meow/pCloudDrive/DSi/DScord/source/segment.h:
-/home/meow/pCloudDrive/DSi/DScord/source/snake.h:
-/home/meow/pCloudDrive/DSi/DScord/source/apple.h:
