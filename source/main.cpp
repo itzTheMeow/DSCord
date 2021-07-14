@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <string>
 #include <nds.h>
 #include <nf_lib.h>
 #include <stdlib.h>
@@ -8,7 +9,7 @@
 #include <nds/arm9/keyboard.h>
 #include <nds/arm9/input.h>
 
-char* enteredText = "";
+std::string enteredText = "";
 
 void doText(u8 screen, u8 layer, u16 x, u16 y, const char *text, bool reset) {
     if(reset) NF_ClearTextLayer(0, 0);
@@ -16,22 +17,7 @@ void doText(u8 screen, u8 layer, u16 x, u16 y, const char *text, bool reset) {
     NF_UpdateTextLayers();
 }
 void sendText() {
-    enteredText = 0;
-}
-
-// https://stackoverflow.com/a/7159973
-char *join(const char* s1,  const char c) {
-    int len = strlen(s1);
-    char* result = (char*) malloc(len + 2);
-
-    if (result)
-    {
-        strcpy(result, s1);
-        result[len] = c;
-        result[len+1] = '\0';
-    }
-
-    return result;
+    enteredText = "";
 }
 
 int main(int argc, char **argv) {
@@ -45,7 +31,7 @@ int main(int argc, char **argv) {
     keyboardInit(&kb, 0, BgType_Text4bpp, BgSize_T_256x512, 14, 0, false, true);
     keyboardShow();
 
-    NF_Set2D(0,0);
+    NF_Set2D(0, 0);
     NF_SetRootFolder("NITROFS");
 
     NF_InitTiledBgBuffers();
@@ -64,14 +50,14 @@ int main(int argc, char **argv) {
         int pressed = keysDown();
 
         if(pressed & KEY_START) break;
-        if(pressed & KEY_A || key == 10) sendText();
-
-        if(key > 0) enteredText = join(enteredText, char(key));
+        else if(pressed & KEY_A || key == 10) sendText();
+        else if(key == 8 && enteredText.length() > 0) enteredText.pop_back();
+        else if(key > 0) enteredText += char(key);
 
         swiWaitForVBlank();
         scanKeys();
 
-        doText(0, 0, 2, 2, enteredText, true);
+        doText(0, 0, 2, 2, enteredText.c_str(), true);
     }
 
     return 0;
