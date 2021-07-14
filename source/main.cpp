@@ -9,7 +9,9 @@
 #include <nds/arm9/keyboard.h>
 #include <nds/arm9/input.h>
 
+int frames = 0;
 std::string enteredText = "";
+bool cursorFlicker = true;
 
 void doText(u8 screen, u8 layer, u16 x, u16 y, const char *text, bool reset) {
     if(reset) NF_ClearTextLayer(0, 0);
@@ -46,6 +48,9 @@ int main(int argc, char **argv) {
     NF_CreateTextLayer(0, 0, 0, "default");
 
     while(1) {
+        frames++;
+        if(frames % 25 == 0) cursorFlicker = !cursorFlicker;
+
         int key = keyboardUpdate();
         int pressed = keysDown();
 
@@ -57,7 +62,9 @@ int main(int argc, char **argv) {
         swiWaitForVBlank();
         scanKeys();
 
-        doText(0, 0, 2, 2, enteredText.c_str(), true);
+        std::string disp = enteredText;
+        if(cursorFlicker) disp += "_";
+        doText(0, 0, 2, 2, disp.c_str(), true);
     }
 
     return 0;
