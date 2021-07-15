@@ -64,7 +64,7 @@ int main(int argc, char **argv) {
 
         std::string disp = enteredText;
         if(cursorFlicker) disp += "_";
-        doText(0, 0, 2, 2, disp.c_str(), true);
+        doText(0, 0, 1, 22, disp.c_str(), true);
     }
 
     return 0;
