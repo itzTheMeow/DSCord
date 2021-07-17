@@ -6,7 +6,7 @@
     {
       "label": "Run",
       "type": "shell",
-      "command": "make && /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=desmume org.desmume.DeSmuME $(find /run/user/1000/doc/ -iname DSCord.nds -type f | tail -n 1)",
+      "command": "make && /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=desmume org.desmume.DeSmuME $(pwd)/DSCord.nds",
       "problemMatcher": [],
       "group": {
         "kind": "build",
