@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
         if(pressed & KEY_START) break;
         else if(pressed & KEY_A || key == 10) sendText();
         else if(key == 8 && enteredText.length() > 0) enteredText.pop_back();
-        else if(key > 0) enteredText += char(key);
+        else if(key > 0) enteredText += key;
 
         swiWaitForVBlank();
         scanKeys();
