@@ -11,13 +11,16 @@
 
 int frames = 0;
 std::string enteredText = "";
+std::string bufferText = "";
 bool cursorFlicker = true;
 
+// simple enough to not need docs
 void doText(u8 screen, u8 layer, u16 x, u16 y, const char *text, bool reset) {
     if(reset) NF_ClearTextLayer(0, 0);
     NF_WriteText(screen, layer, x, y, text);
     NF_UpdateTextLayers();
 }
+// TODO: add actual sending
 void sendText() {
     enteredText = "";
 }
@@ -49,22 +52,26 @@ int main(int argc, char **argv) {
 
     while(1) {
         frames++;
+        // flicker cursor every 25 frames
         if(frames % 25 == 0) cursorFlicker = !cursorFlicker;
 
-        int key = keyboardUpdate();
-        int pressed = keysDown();
+        int key = keyboardUpdate(); // gets keyboard keys
+        int pressed = keysDown(); // gets pressed buttons
 
-        if(pressed & KEY_START) break;
-        else if(pressed & KEY_A || key == 10) sendText();
-        else if(key == 8 && enteredText.length() > 0) enteredText.pop_back();
+        if(pressed & KEY_START) break; // detects START button pressed
+        else if(pressed & KEY_A || key == 10) sendText(); // A key or RETURN
+        else if(key == 8 && enteredText.length() > 0) enteredText.pop_back(); // backspace
         else if(key > 0) enteredText += key;
 
-        swiWaitForVBlank();
-        scanKeys();
+        swiWaitForVBlank(); // no idea honestly
+        scanKeys(); // guessing this scans for new buttons pressed?
 
         std::string disp = enteredText;
-        if(cursorFlicker) disp += "_";
+        if(cursorFlicker) disp += "_"; // add cursor
+        // screen 0 - layer 0 - X 1 - Y 22 - text - clear the screen
         doText(0, 0, 1, 22, disp.c_str(), true);
+
+        doText(0, 0, 0, 0, bufferText.c_str(), false);
     }
 
     return 0;
