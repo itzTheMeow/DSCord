@@ -2,7 +2,10 @@
 # Makefile for NightFox's Lib Projects
 #---------------------------------------------------------------------------------
 
-
+export DEVKITPRO := /opt/devkitpro
+export DEVKITARM := /opt/devkitpro/devkitARM
+export PATH := /opt/devkitpro/devkitARM/bin:$(PATH)
+export PATH := /opt/devkitpro/tools/bin:$(PATH)
 
 #---------------------------------------------------------------------------------
 .SUFFIXES:
@@ -117,7 +120,7 @@ export DEPSDIR	:=	$(CURDIR)/$(BUILD)
 export NITRO_FILES	:=	$(CURDIR)/$(NITRODATA)
 
 CFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
-CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)\*.cpp)))
+CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
 SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
 BINFILES	:=	$(foreach dir,$(DATA),$(notdir $(wildcard $(dir)/*.*)))
 
