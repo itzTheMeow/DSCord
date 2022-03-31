@@ -11,7 +11,7 @@
 
 int frames = 0;
 std::string enteredText = "";
-std::string bufferText = "";
+std::string bufferText = "Screen buffer will show messages.\nThis is a new line?";
 bool cursorFlicker = true;
 
 // simple enough to not need docs
