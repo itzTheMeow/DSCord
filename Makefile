@@ -65,10 +65,10 @@ _ADDFILES	:=	-d $(NITRO_FILES)
 # NITRODATA is the directory where files for NitroFS will be placed
 #---------------------------------------------------------------------------------
 TARGET		:=	$(shell basename $(CURDIR))
-BUILD		:=	build
+BUILD	  	:=	build
 SOURCES		:=	source
 INCLUDES	:=	include
-DATA		:=	data
+DATA	  	:=	data
 NITRODATA	:=	nitrofiles
 
 #---------------------------------------------------------------------------------
@@ -117,7 +117,7 @@ export DEPSDIR	:=	$(CURDIR)/$(BUILD)
 export NITRO_FILES	:=	$(CURDIR)/$(NITRODATA)
 
 CFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
-CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
+CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)\*.cpp)))
 SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
 BINFILES	:=	$(foreach dir,$(DATA),$(notdir $(wildcard $(dir)/*.*)))
 
