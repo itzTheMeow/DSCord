@@ -3,6 +3,13 @@
 #include "../nflib/include/nf_lib.h"
 using namespace std;
 
+struct {
+  int none = -1;
+  int backspace = 8;
+  int tab = 9;
+  int enter = 10;
+} keys;
+
 int frames = 0;
 string enteredText = "";
 string console = "Screen buffer.\nThis is a new line?";
@@ -52,14 +59,13 @@ int main(int argc, char **argv) {
     int key = keyboardUpdate(); // gets keyboard keys
     int pressed = keysDown(); // gets pressed buttons
 
-    if(key != -1) enteredText += to_string(key);
+    if(key != keys.none) enteredText += to_string(key) + " - ";
 
     if (pressed & KEY_START) break; // detects START button pressed
-    else if (pressed & KEY_A || key == 10) sendText(); // A key or RETURN
-    else if (key == 8) {
+    else if (pressed & KEY_A || key == keys.enter) sendText(); // A key or RETURN
+    else if (key == keys.backspace) {
       if (!enteredText.empty()) enteredText.pop_back(); // backspace
     }
-    else if (key == 9) enteredText += " "; // tab
     else if (key > 0) enteredText += char(key);
 
     swiWaitForVBlank(); // no idea honestly
