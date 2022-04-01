@@ -52,12 +52,15 @@ int main(int argc, char **argv) {
     int key = keyboardUpdate(); // gets keyboard keys
     int pressed = keysDown(); // gets pressed buttons
 
+    enteredText += to_string(key);
+
     if (pressed & KEY_START) break; // detects START button pressed
     else if (pressed & KEY_A || key == 10) sendText(); // A key or RETURN
     else if (key == 8) {
       if (!enteredText.empty()) enteredText.pop_back(); // backspace
     }
-    else if (key > 0) enteredText += to_string(key);
+    else if (key == 9) enteredText += " "; // tab
+    else if (key > 0) enteredText += char(key);
 
     swiWaitForVBlank(); // no idea honestly
     scanKeys(); // guessing this scans for new buttons pressed?
