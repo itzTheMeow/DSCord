@@ -4,7 +4,7 @@
 using namespace std;
 
 struct {
-  int none = -1;
+  int none = 1;
   int backspace = 8;
   int tab = 9;
   int enter = 10;
@@ -59,7 +59,7 @@ int main(int argc, char **argv) {
     int key = keyboardUpdate(); // gets keyboard keys
     int pressed = keysDown(); // gets pressed buttons
 
-    if(key != keys.none) enteredText += to_string(key) + " - ";
+    if(key != keys.none) enteredText += to_string(key) + " | ";
 
     if (pressed & KEY_START) break; // detects START button pressed
     else if (pressed & KEY_A || key == keys.enter) sendText(); // A key or RETURN
