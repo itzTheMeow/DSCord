@@ -20,7 +20,7 @@ extern "C" {
 
 
 // Includes devKitPro
-#include <nds.h>
+#include "../../ndslib/include/nds.h"
 
 
 

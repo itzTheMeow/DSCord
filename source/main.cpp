@@ -1,17 +1,20 @@
+#define ARM9
+
 #include <stdio.h>
 #include <string.h>
 #include <string>
-#include <nds.h>
-#include <nf_lib.h>
 #include <stdlib.h>
-#include <nds/ndstypes.h>
-#include <nds/arm9/background.h>
-#include <nds/arm9/keyboard.h>
-#include <nds/arm9/input.h>
+
+#include "../ndslib/include/nds.h"
+#include "../nflib/include/nf_lib.h"
+#include "../ndslib/include/nds/ndstypes.h"
+#include "../ndslib/include/nds/arm9/background.h"
+#include "../ndslib/include/nds/arm9/keyboard.h"
+#include "../ndslib/include/nds/arm9/input.h"
 
 int frames = 0;
 std::string enteredText = "";
-std::string bufferText = "Screen buffer will show messages.\nThis is a new line?";
+std::string console = "Screen buffer.\nThis is a new line?";
 bool cursorFlicker = true;
 
 // simple enough to not need docs
@@ -73,7 +76,7 @@ int main(int argc, char **argv) {
     // screen 0 - layer 0 - X 1 - Y 22 - text - clear the screen
     doText(0, 0, 1, 22, disp.c_str(), true);
 
-    doText(0, 0, 0, 0, bufferText.c_str(), false);
+    doText(0, 0, 0, 0, console.c_str(), false);
   }
 
   return 0;

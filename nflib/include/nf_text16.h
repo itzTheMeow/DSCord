@@ -20,11 +20,11 @@ extern "C" {
 
 
 // Includes devKitPro
-#include <nds.h>
+#include "../../ndslib/include/nds.h"
 
 
 
-// Define el nº de caracteres que tiene la fuente
+// Define el nï¿½ de caracteres que tiene la fuente
 #define NF_TEXT_FONT_CHARS_16 127
 #define NF_TEXT_FONT_LAST_VALID_CHAR_16 113
 

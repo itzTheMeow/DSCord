@@ -20,7 +20,7 @@ extern "C" {
 
 
 // Includes devKitPro
-#include <nds.h>
+#include "../../ndslib/include/nds.h"
 
 
 
@@ -34,7 +34,7 @@ typedef struct {
 	char* tiles;		// Buffer para almacenar los tiles
 	char* map;			// Buffer para almacenar el mapa
 	char* pal;			// Buffer para almacenar la paleta
-	u32 tiles_size;		// Tamaño de los archivos
+	u32 tiles_size;		// Tamaï¿½o de los archivos
 	u32 map_size;
 	u32 pal_size;
 	u16 width;			// Ancho del mapa (en pixeles)
@@ -67,7 +67,7 @@ void NF_LoadColisionMap(const char* file, u8 id, u16 width, u16 height);
 
 // Funcion NF_UnloadColisionMap();
 void NF_UnloadColisionMap(u8 id);
-// Borra de la RAM el mapa de colisiones con el nº de slot indicado.
+// Borra de la RAM el mapa de colisiones con el nï¿½ de slot indicado.
 
 
 

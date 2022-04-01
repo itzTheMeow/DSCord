@@ -100,7 +100,7 @@ LIBS	:= -lnflib -lfilesystem -lfat -lnds9
 # list of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
-LIBDIRS	:=	$(LIBNDS) $(CURDIR)/nflib
+LIBDIRS	:=	$(LIBNDS) $(CURDIR)/nflib $(CURDIR)/ndslib
 
 
 #---------------------------------------------------------------------------------

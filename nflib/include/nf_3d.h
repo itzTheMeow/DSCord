@@ -18,7 +18,7 @@ extern "C" {
 
 
 // Includes devKitPro
-#include <nds.h>
+#include "../../ndslib/include/nds.h"
 
 
 
@@ -37,7 +37,7 @@ void NF_InitOpenGL(void);
 
 // Funcion NF_GetTextureSize();
 extern u16 NF_GetTextureSize(u16 textel);
-// Devuelve el tamaño del textel
+// Devuelve el tamaï¿½o del textel
 
 
 
