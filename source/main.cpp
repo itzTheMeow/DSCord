@@ -101,7 +101,7 @@ int main(int argc, char **argv) {
 
     int y = 0;
     for (auto line : split(console, "\n")) {
-      doText(0, 0, 0, y, console.c_str(), false);
+      doText(0, 0, 0, y, line.c_str(), false);
       y++;
     }
   }
