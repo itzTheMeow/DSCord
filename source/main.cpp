@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
     int key = keyboardUpdate(); // gets keyboard keys
     int pressed = keysDown(); // gets pressed buttons
 
-    enteredText += to_string(key);
+    if(key != -1) enteredText += to_string(key);
 
     if (pressed & KEY_START) break; // detects START button pressed
     else if (pressed & KEY_A || key == 10) sendText(); // A key or RETURN
