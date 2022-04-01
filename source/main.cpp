@@ -1,5 +1,6 @@
 #define ARM9
 #include <string>
+#include <vector>
 #include "../nflib/include/nf_lib.h"
 using namespace std;
 
@@ -19,6 +20,20 @@ struct {
   int tab = 9;
   int enter = 10;
 } keys;
+
+// https://stackoverflow.com/a/37454181
+vector<string> split(const string& str, const string& delim) {
+    vector<string> tokens;
+    size_t prev = 0, pos = 0;
+    do {
+        pos = str.find(delim, prev);
+        if (pos == string::npos) pos = str.length();
+        string token = str.substr(prev, pos-prev);
+        if (!token.empty()) tokens.push_back(token);
+        prev = pos + delim.length();
+    } while (pos < str.length() && prev < str.length());
+    return tokens;
+}
 
 int frames = 0;
 string enteredText = "";
@@ -84,7 +99,11 @@ int main(int argc, char **argv) {
     // screen 0 - layer 0 - X 1 - Y 22 - text - clear the screen
     doText(0, 0, 1, 22, disp.c_str(), true);
 
-    doText(0, 0, 0, 0, console.c_str(), false);
+    int y = 0;
+    for (auto line : split(console, "\n")) {
+      doText(0, 0, 0, y, console.c_str(), false);
+      y++;
+    }
   }
 
   return 0;
