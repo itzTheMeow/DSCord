@@ -1,20 +1,11 @@
 #define ARM9
-
-#include <stdio.h>
-#include <string.h>
 #include <string>
-#include <stdlib.h>
-
-#include "../ndslib/include/nds.h"
 #include "../nflib/include/nf_lib.h"
-#include "../ndslib/include/nds/ndstypes.h"
-#include "../ndslib/include/nds/arm9/background.h"
-#include "../ndslib/include/nds/arm9/keyboard.h"
-#include "../ndslib/include/nds/arm9/input.h"
+using namespace std;
 
 int frames = 0;
-std::string enteredText = "";
-std::string console = "Screen buffer.\nThis is a new line?";
+string enteredText = "";
+string console = "Screen buffer.\nThis is a new line?";
 bool cursorFlicker = true;
 
 // simple enough to not need docs
@@ -66,12 +57,12 @@ int main(int argc, char **argv) {
     else if (key == 8) {
       if (!enteredText.empty()) enteredText.pop_back(); // backspace
     }
-    else if (key > 0) enteredText += key;
+    else if (key > 0) enteredText += to_string(key);
 
     swiWaitForVBlank(); // no idea honestly
     scanKeys(); // guessing this scans for new buttons pressed?
 
-    std::string disp = enteredText;
+    string disp = enteredText;
     if(cursorFlicker) disp += "_"; // add cursor
     // screen 0 - layer 0 - X 1 - Y 22 - text - clear the screen
     doText(0, 0, 1, 22, disp.c_str(), true);
