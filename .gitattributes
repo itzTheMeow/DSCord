@@ -3,3 +3,5 @@
 
 ndslib/** linguist-generated
 nflib/** linguist-generated
+build/** linguist-generated
+grit/** linguist-generated
